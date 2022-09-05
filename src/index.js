@@ -1,3 +1,4 @@
+import {BrowserRouter as Router, Routes} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import LoginUserSubmit from "./LogInUser";
@@ -29,7 +30,9 @@ const App = () => {
     <div>
       <div>
         <nav>
-          <span>Home </span>
+        <span>RegisterNewUser </span>
+        <span>  Login</span>
+          <span>  Home </span>
           <span> CreatePost </span>
           <span> AllPosts</span>
         </nav>
@@ -50,4 +53,4 @@ const App = () => {
 
 const container = document.getElementById("app");
 const root = createRoot(container);
-root.render(<App />);
+root.render(<Router><App/></Router>);
