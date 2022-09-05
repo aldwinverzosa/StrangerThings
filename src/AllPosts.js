@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const cohort = "2208-ftb-et-web-ft";
 const strangerThings = "https://strangers-things.herokuapp.com/api";
@@ -23,15 +25,20 @@ const ViewAllPosts = (props) => {
 
   return (
     <div>
-    <nav>
-    RegisterNewUser Login Home CreatePost
-    {/* <Link to="/allposts">Show all Posts</Link> */}
-  </nav>
-    <ul>
-      {allPosts.map((singleItem, i) => {
-        return <li key={i}>{singleItem.title}</li>;
-      })}
-    </ul>
+      <nav>
+      <Link className="navBarLink" to="/register">RegisterNow</Link>
+      <Link className="navBarLink" to="/login">Login</Link>
+      <Link className="navBarLink" to="/home">Home</Link>
+
+
+
+      </nav>
+      <h1>All Postings</h1>
+      <ul>
+        {allPosts.map((singleItem, i) => {
+          return <li key={i}>{singleItem.title}</li>;
+        })}
+      </ul>
     </div>
   );
 };

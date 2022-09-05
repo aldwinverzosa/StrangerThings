@@ -1,5 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const cohort = "2208-ftb-et-web-ft";
 const strangerThings = "https://strangers-things.herokuapp.com/api";
@@ -30,7 +32,16 @@ const LoginUserSubmit = () => {
     localStorage.setItem("token", JSON.stringify(token));
   };
   return (
+    
     <div>
+            <div>
+        <nav className="nav">
+          <Link className="navBarLink" to="/allposts">ShowAllPosts</Link>
+          <Link className="navBarLink" to="/register">RegisterNow</Link>
+          <Link className="navBarLink" to="/home">Home</Link>
+
+        </nav>
+      </div>
       {/* Login Submit Form */}
       <form onSubmit={loginSubmit}>
         Name:
@@ -57,4 +68,4 @@ const LoginUserSubmit = () => {
   );
 };
 
-export default LoginUserSubmit
+export default LoginUserSubmit;

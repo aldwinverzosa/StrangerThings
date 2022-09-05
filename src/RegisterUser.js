@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const cohort = "2208-ftb-et-web-ft";
 const strangerThings = "https://strangers-things.herokuapp.com/api";
-
 
 const RegUser = () => {
   const [newUser, setNewUser] = useState("");
@@ -32,6 +33,15 @@ const RegUser = () => {
     setNewPassword("");
   };
   return (
+    <div>
+          <div> 
+            <nav className="nav">
+          <Link className="navBarLink" to="/allposts">ShowAllPosts</Link>
+          <Link className="navBarLink" to="/login">Login</Link>
+          <Link className="navBarLink" to="/home">Home</Link>
+            </nav>
+          </div>
+
     <form onSubmit={handleSubmit}>
       Name:
       <input
@@ -53,7 +63,8 @@ const RegUser = () => {
       ></input>
       <button type="text">Register</button>
     </form>
+    </div>
   );
 };
 
-export default RegUser
+export default RegUser;
