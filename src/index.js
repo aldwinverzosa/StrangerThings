@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes} from 'react-router-dom'
+import { BrowserRouter as Router, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import LoginUserSubmit from "./LogInUser";
@@ -24,15 +24,15 @@ const App = () => {
     getAllPosts();
     const data = await response.json();
     setAllPosts(data.data.posts);
-  }
+  };
 
   return (
     <div>
       <div>
         <nav>
-        <span>RegisterNewUser </span>
-        <span>  Login</span>
-          <span>  Home </span>
+          <span>RegisterNewUser </span>
+          <span> Login</span>
+          <span> Home </span>
           <span> CreatePost </span>
           <span> AllPosts</span>
         </nav>
@@ -42,10 +42,9 @@ const App = () => {
       <div></div>
       <LoginUserSubmit />
       <div>
-        <h1>All Postings</h1>
-        {allPosts.map((post, i) => {
-          return <p key={i}>{post.title}</p>;
-        })}
+        <ul>
+          <ViewAllPosts allitems={allPosts} />
+        </ul>
       </div>
     </div>
   );
@@ -53,4 +52,8 @@ const App = () => {
 
 const container = document.getElementById("app");
 const root = createRoot(container);
-root.render(<Router><App/></Router>);
+root.render(
+  <Router>
+    <App />
+  </Router>
+);
