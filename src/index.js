@@ -1,3 +1,5 @@
+//main file
+
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 const cohort = "2208-ftb-et-web-ft";
