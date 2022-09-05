@@ -1,50 +1,30 @@
-import { BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import LoginUserSubmit from "./LogInUser";
 import RegUser from "./RegisterUser";
 import ViewAllPosts from "./AllPosts";
+import { Link } from "react-router-dom";
 
 const cohort = "2208-ftb-et-web-ft";
 const strangerThings = "https://strangers-things.herokuapp.com/api";
 
 const App = () => {
-  const [allPosts, setAllPosts] = useState([]);
-
   //cant use API if no useEffect?
-  useEffect(() => {
-    const getAllData = async () => {
-      await getAllPosts();
-    };
-    getAllData();
-  }, []);
-
-  const getAllPosts = async () => {
-    const response = await fetch(`${strangerThings}/${cohort}/posts`);
-    getAllPosts();
-    const data = await response.json();
-    setAllPosts(data.data.posts);
-  };
 
   return (
     <div>
       <div>
         <nav>
-          <span>RegisterNewUser </span>
-          <span> Login</span>
-          <span> Home </span>
-          <span> CreatePost </span>
-          <span> AllPosts</span>
+          RegisterNewUser Login Home CreatePost
+          <Link to="/allposts">Show all Posts</Link>
         </nav>
       </div>
       <h1>Hello from Stranger Things</h1>
       <RegUser />
       <div></div>
-      <LoginUserSubmit />
       <div>
-        <ul>
-          <ViewAllPosts allitems={allPosts} />
-        </ul>
+        <ul></ul>
       </div>
     </div>
   );
@@ -54,6 +34,12 @@ const container = document.getElementById("app");
 const root = createRoot(container);
 root.render(
   <Router>
-    <App />
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route
+        path="/allposts"
+        element={<ViewAllPosts/>}
+      ></Route>
+    </Routes>
   </Router>
 );
