@@ -1,4 +1,34 @@
+import React from 'react';
+import { useState } from 'react';
+
+const cohort = "2208-ftb-et-web-ft";
+const strangerThings = "https://strangers-things.herokuapp.com/api";
+
 const LoginUserSubmit = () => {
+  const [LoginName, setLoginName] = useState("");
+  const [LoginPassword, setLoginPassword] = useState("");
+
+  const loginSubmit = async (event) => {
+    event.preventDefault();
+    console.log("LoginSubmit");
+    const response = await fetch(`${strangerThings}/${cohort}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: LoginName,
+          password: LoginPassword,
+        },
+      }),
+    });
+    const data = await response.json();
+    console.log("loginData", data);
+    let token = await data.data.token;
+
+    localStorage.setItem("token", JSON.stringify(token));
+  };
   return (
     <div>
       {/* Login Submit Form */}
@@ -26,3 +56,5 @@ const LoginUserSubmit = () => {
     </div>
   );
 };
+
+export default LoginUserSubmit
