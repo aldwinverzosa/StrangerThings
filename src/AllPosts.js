@@ -49,6 +49,7 @@ const ViewAllPosts = (props) => {
             <h4>Price: {singleItem.price}</h4>
             <h4>Seller: {singleItem.author.username}</h4>
             <h4>Updated At: {singleItem.updatedAt}</h4>
+            <button>See Details</button>
 
 
           </div>
