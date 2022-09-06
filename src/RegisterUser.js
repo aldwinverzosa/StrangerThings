@@ -25,6 +25,10 @@ const RegUser = () => {
         },
       }),
     });
+
+    // if(error.data.name === "UserExists") {
+    //   console.log("THIS IS WORKING")
+    // } 
     const data = await response.json();
     console.log("data", data);
     console.log("data2", data.data.token);

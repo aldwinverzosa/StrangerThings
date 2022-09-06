@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import './App.css';
+
 
 
 const cohort = "2208-ftb-et-web-ft";
@@ -21,24 +23,37 @@ const ViewAllPosts = (props) => {
     getAllPosts();
     const data = await response.json();
     setAllPosts(data.data.posts);
+    console.log(data.data);
   };
 
   return (
     <div>
       <nav>
-      <Link className="navBarLink" to="/register">RegisterNow</Link>
-      <Link className="navBarLink" to="/login">Login</Link>
-      <Link className="navBarLink" to="/home">Home</Link>
-
-
-
+        <Link className="navBarLink" to="/register">
+          RegisterNow
+        </Link>
+        <Link className="navBarLink" to="/login">
+          Login
+        </Link>
+        <Link className="navBarLink" to="/home">
+          Home
+        </Link>
       </nav>
       <h1>All Postings</h1>
-      <ul>
-        {allPosts.map((singleItem, i) => {
-          return <li key={i}>{singleItem.title}</li>;
-        })}
-      </ul>
+
+      {allPosts.map((singleItem, i) => {
+        return (
+          <div className="card" key={i}>
+            <h2>Title: {singleItem.title}</h2>
+            <h4>Description: {singleItem.description}</h4>
+            <h4>Price: {singleItem.price}</h4>
+            <h4>Seller: {singleItem.author.username}</h4>
+            <h4>Updated At: {singleItem.updatedAt}</h4>
+
+
+          </div>
+        );
+      })}
     </div>
   );
 };

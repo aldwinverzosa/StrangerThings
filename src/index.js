@@ -6,6 +6,7 @@ import RegUser from "./RegisterUser";
 import ViewAllPosts from "./AllPosts";
 import { Link } from "react-router-dom";
 import './App.css';
+import CreatePost from "./CreatePost";
 
 const cohort = "2208-ftb-et-web-ft";
 const strangerThings = "https://strangers-things.herokuapp.com/api";
