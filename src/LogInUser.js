@@ -1,14 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const cohort = "2208-ftb-et-web-ft";
 const strangerThings = "https://strangers-things.herokuapp.com/api";
 
 const LoginUserSubmit = () => {
+  const navigate = useNavigate();
+
   const [LoginName, setLoginName] = useState("");
   const [LoginPassword, setLoginPassword] = useState("");
+  let [loginNow, setLoginNow] = useState("");
 
   const loginSubmit = async (event) => {
     event.preventDefault();
@@ -27,22 +30,28 @@ const LoginUserSubmit = () => {
     });
     const data = await response.json();
     console.log("loginData", data);
-    let token = await data.data.token;
 
-    localStorage.setItem("token", JSON.stringify(token));
+    loginNow = setLoginNow(data.success);
+
+    if (data.success === true) {
+      let token = await data.data.token;
+      localStorage.setItem("token", token);
+      navigate("/dashboard");
+    }
   };
   return (
-    
     <div>
-            <div>
+      <div>
         <nav className="nav">
-          <Link className="navBarLink" to="/allposts">ShowAllPosts</Link>
-          <Link className="navBarLink" to="/register">RegisterNow</Link>
-          <Link className="navBarLink" to="/home">Home</Link>
-
+          {/* <Link className="navBarLink" to="/allposts">ShowAllPosts</Link> */}
+          <Link className="navBarLink" to="/register">
+            Register Now
+          </Link>
+          {/* <Link className="navBarLink" to="/home">Home</Link> */}
         </nav>
       </div>
       {/* Login Submit Form */}
+      <h1 class="login">LOGIN</h1>
       <form onSubmit={loginSubmit}>
         Name:
         <input
@@ -55,7 +64,7 @@ const LoginUserSubmit = () => {
         ></input>
         Password:
         <input
-          type="text"
+          type="password"
           value={LoginPassword}
           onChange={(event) => {
             setLoginPassword(event.target.value);
@@ -63,6 +72,14 @@ const LoginUserSubmit = () => {
           }}
         ></input>
         <button type="text">Log In</button>
+        <h4>{loginNow}</h4>
+        {loginNow === true ? (
+          <h3>Welcome Back</h3>
+        ) : loginNow === false ? (
+          <h3>Please Register now</h3>
+        ) : (
+          ""
+        )}
       </form>
     </div>
   );

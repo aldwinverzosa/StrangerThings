@@ -18,10 +18,12 @@ const ViewAllPosts = (props) => {
     getAllData();
   }, []);
   const allitems = props.allitems;
+
   const getAllPosts = async () => {
     const response = await fetch(`${strangerThings}/${cohort}/posts`);
     getAllPosts();
     const data = await response.json();
+    console.log("DATA", data)
     setAllPosts(data.data.posts);
     console.log(data.data);
   };
@@ -29,26 +31,22 @@ const ViewAllPosts = (props) => {
   return (
     <div>
       <nav>
-        <Link className="navBarLink" to="/register">
-          RegisterNow
+        <Link className="navBarLink" to="/dashboard">
+          Dashboard
         </Link>
-        <Link className="navBarLink" to="/login">
-          Login
-        </Link>
-        <Link className="navBarLink" to="/home">
-          Home
-        </Link>
+       
       </nav>
       <h1>All Postings</h1>
 
-      {allPosts.map((singleItem, i) => {
+      { allPosts.map((singleItem, i) => {
         return (
           <div className="card" key={i}>
-            <h2>Title: {singleItem.title}</h2>
+            <h2 className="postName">Title: {singleItem.title}</h2>
             <h4>Description: {singleItem.description}</h4>
             <h4>Price: {singleItem.price}</h4>
             <h4>Seller: {singleItem.author.username}</h4>
             <h4>Updated At: {singleItem.updatedAt}</h4>
+            <h4>ID: {singleItem._id}</h4>
             <button>See Details</button>
 
 
