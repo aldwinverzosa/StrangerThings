@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './App.css';
+import LogoutButton from "./logout";
 
 
 
@@ -36,6 +37,9 @@ const ViewAllPosts = (props) => {
         </Link>
        
       </nav>
+      <div className="logout2">
+        <LogoutButton/>
+        </div>
       <h1>All Postings</h1>
 
       { allPosts.map((singleItem, i) => {
@@ -47,7 +51,7 @@ const ViewAllPosts = (props) => {
             <h4>Seller: {singleItem.author.username}</h4>
             <h4>Updated At: {singleItem.updatedAt}</h4>
             <h4>ID: {singleItem._id}</h4>
-            <button>See Details</button>
+            <button>See Message</button>
 
 
           </div>

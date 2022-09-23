@@ -4,6 +4,17 @@
   font-size: 40px;
 }
 
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+}
+
+.logout2 {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .postName {
   font-family: "Courier New", Courier, monospace;
 }

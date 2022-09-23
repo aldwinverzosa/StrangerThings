@@ -1,7 +1,8 @@
 import React from "react";
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
+import LogoutButton from "./logout";
 
 const cohort = "2208-ftb-et-web-ft";
 const strangerThings = "https://strangers-things.herokuapp.com/api";
@@ -46,6 +47,9 @@ const CreatePost = () => {
           Dashboard
         </Link>
       </nav>
+      <div className="logout2">
+        <LogoutButton/>
+        </div>
 
       <h1>Create Post</h1>
       <form onSubmit={PostHandle}>

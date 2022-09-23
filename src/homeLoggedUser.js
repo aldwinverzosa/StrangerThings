@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./App.css";
+import LogoutButton from "./logout";
 
 import MyProfile from "./myProfile";
 
@@ -12,9 +13,14 @@ const Dashboard = () => {
             All Posts
           </Link>
           <Link className="navBarLink" to="/createpost">
-            Create Post{" "}
+            Create Post
           </Link>
         </nav>
+        <div className="logout2">
+        <LogoutButton/>
+        </div>
+        <div>
+        </div>
       </div>
 
       <h1>Welcome to your Dashboard</h1>
